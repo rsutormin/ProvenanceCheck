@@ -1,0 +1,30 @@
+{
+    "ver": "0.0.1",
+    "authors": [
+        "rsutormin"
+    ],
+    "contact": "",
+    "categories": ["active"],
+    "widgets": {
+        "input": null,
+        "output": null
+    },
+    "parameters": [ 
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "ProvenanceCheck",
+            "method": "get_service_props",
+            "input_mapping": [
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [0],
+                    "target_property": "output"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}
