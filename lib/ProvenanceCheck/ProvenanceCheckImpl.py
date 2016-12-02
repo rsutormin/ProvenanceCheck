@@ -43,6 +43,7 @@ class ProvenanceCheck:
         # return variables are: returnVal
         #BEGIN get_service_props
         prov_list = ctx.provenance()
+        print("Provenance: " + str(prov_list))
         prov = prov_list[0] if len(prov_list) > 0 else {}
         module_name = prov.get('service')
         service_ver = prov.get('service_ver')
