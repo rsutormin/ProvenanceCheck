@@ -46,11 +46,15 @@ class ProvenanceCheck:
         print("Provenance: " + str(prov_list))
         prov = prov_list[0] if len(prov_list) > 0 else {}
         module_name = prov.get('service')
-        service_ver = prov.get('service_ver')
+        semantic_ver = prov.get('service_ver')
+        subactions = prov.get('subactions')
+        subaction = subactions[0] if subactions else {}
+        git_commit_hash = subaction.get('commit')
+        service_ver = git_commit_hash if git_commit_hash else semantic_ver
         pc = ProvenanceCheckClient(os.environ['SDK_CALLBACK_URL'], service_ver=service_ver)
         phrase = pc.hello_string(module_name)
-        returnVal = {'module_name': module_name, 'service_ver': service_ver,
-                     'hello_string': phrase}
+        returnVal = {'module_name': module_name, 'semantic_ver': semantic_ver,
+                     'git_commit_hash': git_commit_hash, 'hello_string': phrase}
         #END get_service_props
 
         # At some point might do deeper type checking...
